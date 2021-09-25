@@ -3,6 +3,7 @@ provider "aws" {
 }
 
 module "ec2_instance" {
+  count                  = 3
   source                 = "terraform-aws-modules/ec2-instance/aws"
   version                = "~> 3.0"
   name                   = var.instance_name

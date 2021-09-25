@@ -8,5 +8,5 @@ output "security_group_public" {
 }
 
 output "instance_ip" {
-  value = module.ec2_instance.public_ip
+  value = module.ec2_instance[*].public_ip
 }

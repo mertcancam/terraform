@@ -1,0 +1,24 @@
+- hosts: all
+  become: true
+  pre_tasks:
+
+    - name: update cache and install upgrades
+      tags: always
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: install apache
+      tags: apache,apache2
+      apt:
+        name: apache2
+        state: latest
+
+    - name: copy default html file for site
+      tags: apache,apache2
+      copy:
+        src: default_site.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
